@@ -1,18 +1,15 @@
 {
-    "name": "Vandy Class Finder",
-    "version": "1.0",
-    "description": "Determines the concentration of a class on YES",
     "manifest_version": 2,
-    "background": {
-        "scripts": [ "background.js" ]
-    },
+
+    "name": "Vandy Class Finder",
+    "description": "Determines what classes shown on YES fulfill certain concentrations of a given major at Vanderbilt.",
+    "version": "1.0",
+
     "content_scripts": [
         {
-          "matches": [ "<all_urls>" ],
-          "js": [ "jquery-3.3.1.min.js", "content.js" ]
+          "matches": [ "https://en.wikipedia.org/*" ],
+          "js": [ "jquery-3.3.1.min.js", "content.js" ],
+          "run_at": "document_end"
         }
-    ],
-    "browser_action": {
-        "default_icon": "vanderbilt.png"
-    }
+    ]
 }
