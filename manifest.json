@@ -5,6 +5,7 @@
     "description": "Determines what classes shown on YES fulfill certain concentrations of a given major at Vanderbilt.",
     "version": "1.0",
     "options_page": "options.html",
+    "permissions": ["storage"],
 
     "content_scripts": [
         {
