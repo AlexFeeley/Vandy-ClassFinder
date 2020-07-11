@@ -10,7 +10,11 @@ concentration each class they're looking at falls under for a specified major.
 * In the upper right corner, toggle *Developer Mode*
 * Click on the *Load unpacked* button in the upper left corner, and select the extension's directory
 
-### To re-load the extension after making a change:
+### To pin the Chrome extension to the taskbar:
+* Click the Puzzle piece in the taskbar
+* Pin the *Vandy Class Finder* extension
+
+### To re-load the Chrome extension after making a change:
 * Reload the [extension management page](chrome://extensions), and Chrome will reload the extension
 
 ### To see the action of the Chrome extension:
@@ -18,3 +22,6 @@ concentration each class they're looking at falls under for a specified major.
 
 ### Notes
 * The all_urls in the manifest.json loads the chrome extension onto every webpage, this will be changed later to only apply to YES.
+* Content scripts can't use Google APIs
+* Background script allows scripts to send and listen for messages (message passing)
+
