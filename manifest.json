@@ -9,7 +9,7 @@
 
     "content_scripts": [
         {
-          "matches": [ "https://en.wikipedia.org/*" ],
+          "matches": [ "https://acad.app.vanderbilt.edu/more/SearchClasses*"],
           "js": [ "jquery-3.3.1.min.js", "content.js" ],
           "run_at": "document_end"
         }
