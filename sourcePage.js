@@ -12,12 +12,12 @@ function DOMtoString(document_root) {
 
         switch(element) {
             case 'MATH 1300:': case 'MATH 1301:': case 'MATH 2300:': case 'MATH 2410:':
-            case 'MATH 2420:': case 'MATH 2600': case 'MATH 2810':
+            case 'MATH 2420:': case 'MATH 2600:': case 'MATH 2810:':
                     concentration = "Math";
                     break;
             case 'BSCI 1101:': case 'BSCI 1101L:': case 'BSCI 1510:': case 'BSCI 1510L:': case 'BSCI 1511:':
             case 'BSCI 1511L:': case 'BSCI 2218:': case 'BSCI 2219:': case 'CHEM 1601:': case 'CHEM 1601L:':
-            case 'CHEM 1602:': case 'CHEM 1602L:': case 'MSE 1500:': case 'MSE 1500L': case 'PHYS 1601':
+            case 'CHEM 1602:': case 'CHEM 1602L:': case 'MSE 1500:': case 'MSE 1500L:': case 'PHYS 1601:':
             case 'PHYS 1601L:': case 'PHYS 1602:': case 'PHYS 1602L:':
                 concentration = "Science";
                 break;
