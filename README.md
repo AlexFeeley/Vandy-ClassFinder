@@ -1,8 +1,6 @@
 # Vandy-ClassFinder
 
-This project was created during VandyHacks Summer edition by Alex, Claire, and Hadley. 
-This chrome extension aims to help Vanderbilt students save time during course registration by telling students what
-concentration each class they're looking at falls under for a specified major. 
+Chrome extension that tells students what part of their major is being fulfilled by each class shown on YES. This project was created during VandyHacks Summer edition by Alex, Claire, and Hadley. 
 
 ### To install the Chrome extension:
 * Clone the repository onto your local machine into a known directory
@@ -18,7 +16,7 @@ concentration each class they're looking at falls under for a specified major.
 * Reload the [extension management page](chrome://extensions), and Chrome will reload the extension
 
 ### To see the action of the Chrome extension:
-* Open a new tab or window!
+* Click on the Vanderbilt icon in the pinned tab bar
 
 ### To be continued:
 * Connect major set in options to selectedMajor in sourcePage.js
