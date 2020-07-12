@@ -5,8 +5,11 @@
     "description": "Determines what classes shown on YES fulfill certain concentrations of a given major at Vanderbilt.",
     "version": "1.0",
     "options_page": "options.html",
-    "permissions": ["storage"],
-
+    "permissions": [ "storage", "tabs", "<all_urls>" ],
+    "browser_action": {
+        "default_icon": "icons/vanderbilt.png",
+        "default_popup": "popup.html"
+    },
     "content_scripts": [
         {
           "matches": [ "https://acad.app.vanderbilt.edu/more/SearchClasses*"],
