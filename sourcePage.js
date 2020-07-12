@@ -43,9 +43,10 @@ function DOMtoString(document_root) {
                 break;
             case 'CS 1151:':
                 concentration = "Computers and Ethics";
-
+                break;
             default:
                 concentration = "Not available.";
+                break;
         }
 
         html += (element + ' ' + concentration + '\n');
