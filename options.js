@@ -1,7 +1,7 @@
 // Saves options to chrome.storage
 function save_options() {
     var major = document.getElementById('major').value;
-    chrome.storage.sync.set({
+    chrome.storage.local.set({
         major: major
     }, function() {
         // Update status to let user know options were saved.
@@ -17,7 +17,7 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
-    chrome.storage.sync.get({
+    chrome.storage.local.get({
         major: 'computer-science'
     }, function(items) {
         document.getElementById('major').value = items.major;
@@ -26,4 +26,3 @@ function restore_options() {
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click',
     save_options);
-

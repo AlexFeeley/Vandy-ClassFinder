@@ -20,8 +20,8 @@ concentration each class they're looking at falls under for a specified major.
 ### To see the action of the Chrome extension:
 * Open a new tab or window!
 
-### Notes
-* The all_urls in the manifest.json loads the chrome extension onto every webpage, this will be changed later to only apply to YES.
-* Content scripts can't use Google APIs
-* Background script allows scripts to send and listen for messages (message passing)
-
+### To be continued:
+* Connect major set in options to selectedMajor in sourcePage.js
+* Replace switch statement with variable that returns value from parsing through Excel function
+* Add majors outside of engineering
+* Connect *updated class details* button to popup
