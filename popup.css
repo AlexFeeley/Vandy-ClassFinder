@@ -1,5 +1,14 @@
 body {
     width: 400px; 
-    background-color: #FFF481;
+    background-color: #FFEFA6;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+img {
+    width: 30vw;
+    height: auto;
+    margin-left: 3vw;
+}
+h1, h3 {
     font-family: 'Courier New', Courier, monospace;
 }
