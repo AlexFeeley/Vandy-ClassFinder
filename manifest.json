@@ -2,19 +2,23 @@
     "manifest_version": 2,
 
     "name": "Vandy Class Finder",
-    "description": "Determines what classes shown on YES fulfill certain concentrations of a given major at Vanderbilt.",
+    "description": "Determines what classes shown on YES fulfill certain concentrations of a given major at Vanderbilt",
     "version": "1.0",
     "options_page": "options.html",
-    "permissions": [ "storage", "tabs", "<all_urls>" ],
-    "browser_action": {
-        "default_icon": "icons/vanderbilt.png",
-        "default_popup": "popup.html"
-    },
+    "permissions": [ "storage", "tabs", 
+        "https://acad.app.vanderbilt.edu/more/SearchClasses*",
+        "http://acad.app.vanderbilt.edu/more/SearchClasses*" 
+    ],
     "content_scripts": [
         {
           "matches": [ "https://acad.app.vanderbilt.edu/more/SearchClasses*"],
           "js": [ "jquery-3.3.1.min.js", "content.js" ],
           "run_at": "document_end"
         }
-    ]
+    ],
+    "browser_action": {
+        "default_icon": "icons/vanderbilt.png",
+        "default_title": "Vandy ClassFinder",
+        "default_popup": "popup.html"
+    }
 }
