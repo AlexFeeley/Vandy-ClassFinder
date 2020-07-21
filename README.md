@@ -2,6 +2,13 @@
 
 Chrome extension that tells students what part of their major is being fulfilled by each class shown on YES. This project was created during VandyHacks Summer edition by Alex, Claire, and Hadley. 
 
+## Select a major:
+The Chrome extension uses a major, provided by you, to determine which requirements of that major each class on your YES page meets. 
+* Right click the *Vandy Class Finder* extension
+* Select options
+* Using the dropdown, pick your major
+* Hit save
+
 ### To install the Chrome extension:
 * Clone the repository onto your local machine into a known directory
 * Open a new Google Chrome browser, and navigate to the [extension management page](chrome://extensions)
