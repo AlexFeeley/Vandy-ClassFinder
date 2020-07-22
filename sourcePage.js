@@ -54,6 +54,9 @@ function getHtml(selectedMajor) {
             case 'biomedical-engineering':
                 concentration = biomedicalEngineering(className);
                 break;
+            case 'chemical-engineering':
+                concentration = chemicalEngineering(className);
+                break;
             default:
                 concentration = "This major is not yet available.";
         }
@@ -61,6 +64,52 @@ function getHtml(selectedMajor) {
         html += (className + ' (' + concentration + ')\n');
     }
     return html;
+}
+
+function chemicalEngineering(className) {
+    var concentration; // Local variable to hold concentration
+    var splitName = className.split(" "); // Split string to check for other class types
+
+    switch(className) {
+        case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': case 'MATH 2420':
+            concentration = "Math";
+            break;
+        case 'CHEM 1601': case 'CHEM 1601L': case 'CHEM 1602': case 'CHEM 1602L': case 'CHEM 2221':
+        case 'CHEM 2221L': case 'CHEM 2222': case 'CHEM 2222L': case 'PHYS 1601': 
+        case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L':
+            concentration = "Basic Science";
+            break;
+        case 'ES 1401': case 'ES 1402': case 'ES 1403': case 'CS 1101': case 'CS 1103': 
+        case 'CS 1104':
+            concentration = "Engineering Fundamentals";
+            break;
+        case 'CHBE 2100': case 'CHBE 2200': case 'CHBE 2250': case 'CHBE 2900W': case 'CHBE 3200':
+        case 'CHBE 3250': case 'CHBE 3300': case 'CHBE 3350': case 'CHBE 3600': case 'CHBE 3900W':
+        case 'CHBE 4900W': case 'CHBE 4950W': case 'CHBE 4951W': case 'CHBE 4959':
+            concentration = "Chemical and Biomedical Engineering";
+            break;
+        case 'BSCI 1510': case 'CHBE 2150': case 'CHEM 3300': case 'BSCI 2201': case 'BSCI 2520':
+            concentration = "Science Electives";
+            break;
+        default:
+            if ((splitName[0] == 'CHBE' && parseInt(splitName[1] >= 4000)) || 
+            ((splitName[0] == 'BME' || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
+            splitName[0] == 'CS' || splitName[0] == 'EECE' || splitName[0] == 'ENVE' || 
+            splitName[0] == 'ME' || splitName[0] == 'MSE' || splitName[0] == 'NANO' ||
+            splitName[0] == 'SC') && (className != 'BME 2201' && className != 'BME 2860' &&
+            className != 'ME 2220')) || ((splitName[0] == 'ANTH' || splitName == 'ASTR' ||
+            splitName[0] == 'BSCI' || splitName[0] == 'CHEM' || splitName == 'EES' || 
+            splitName[0] == 'MATH' || splitName[0] == 'NSC' || splitName[0] == 'PHYS') && 
+            parseInt(splitName[1]) >= 1500) || (className == 'ENGM 3000' ||
+            className == 'ENGM 3010' || className == 'ENGM 3300' || className == 'ENGM 3650' ||
+            className == 'ENGM 3700' || className == 'ENGM 4500')) {
+                concentration = "Technical Elective";
+            } else {
+                concentration = "Open Elective";
+            }
+    }
+
+    return concentration;
 }
 
 function biomedicalEngineering(className) {
@@ -99,14 +148,18 @@ function biomedicalEngineering(className) {
         default:
             if (splitName[0] == 'BME' && (splitName[1] != '2860' && parseInt(splitName[1]) > 2210)){
                 concentration = "Biomedical Engineering Electives";
-            } else if ((splitName[0] == 'BME' || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
+            } else if (((splitName[0] == 'BME' || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
             splitName[0] == 'ENVE' || splitName[0] == 'EECE' || splitName[0] == 'CS' || 
             splitName[0] == 'ENGM' || splitName[0] == 'MSE' || splitName[0] == 'ME' || 
             splitName[0] == 'NANO' || splitName[0] == 'SC') && (className != 'BME 2201' && 
             className != 'BME 2860' && className != 'CHBE 3300' && className != 'CE 2200' && 
             className != 'CS 1000' && className != 'CS 1151' && className != 'ENGM 2160' && 
             className != 'ENGM 2440' && className != 'ENGM 3100' && className != 'ENGM 3350' && 
-            className != 'ME 2171')) {
+            className != 'ME 2171'))) {
+                concentration = "Technical Elective";
+            } else if ((splitName[0] == 'ANTH' || splitName == 'ASTR' || splitName[0] == 'BSCI' || 
+            splitName[0] == 'CHEM' || splitName == 'EES' || splitName[0] == 'MATH' || 
+            splitName[0] == 'NSC' || splitName[0] == 'PHYS') && parseInt(splitName[1] >= 2000)) {
                 concentration = "Technical Elective";
             } else {
                 concentration = "Open Elective";
