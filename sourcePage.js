@@ -51,6 +51,9 @@ function getHtml(selectedMajor) {
             case 'computer-engineering':
                 concentration = computerEngineering(className);
                 break;
+            case 'biomedical-engineering':
+                concentration = biomedicalEngineering(className);
+                break;
             default:
                 concentration = "This major is not yet available.";
         }
@@ -58,6 +61,59 @@ function getHtml(selectedMajor) {
         html += (className + ' (' + concentration + ')\n');
     }
     return html;
+}
+
+function biomedicalEngineering(className) {
+    var concentration; // Local variable to hold concentration
+    var splitName = className.split(" "); // Split string to check for other class types
+
+    switch(className) {
+        case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': case 'MATH 2400': case 'MATH 2410': 
+        case 'MATH 2420': case 'MATH 2600': case 'MATH 2610':
+            concentration = "Math";
+            break;
+        case 'CHEM 1601': case 'CHEM 1601L': case 'CHEM 1602': case 'CHEM 1602L': case 'PHYS 1601': 
+        case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L': case 'BSCI 1510': case 'BSCI 1510L':
+            concentration = "Basic Science";
+            break;
+        case 'ES 1401': case 'ES 1402': case 'ES 1403': case 'CS 1101': case 'CS 1103': 
+        case 'CS 1104':
+            concentration = "Engineering Fundamentals";
+            break;
+        case 'EECE 2112':
+            concentration = "Electrical Engineering";
+            break;
+        case 'BME 2001': case 'BME 2002': case 'BME 2100': case 'BME 2400': case 'BME 2900W':
+        case 'BME 3000': case 'BME 3301': case 'BME 3302': case 'BME 3400': case 'BME 3500':
+        case 'BME 3900W': case 'BME 4901W': case 'BME 4950': case 'BME 4951': case 'BME 4959':
+            concentration = "Biomedical Engineering Core";
+            break;
+        case 'CHBE 4500': case 'CHBE 4800': case 'CHBE 4805': case 'CHBE 4810': case 'CHBE 4820':
+        case 'CHBE 4840': case 'CHBE 4870': case 'EECE 3214': case 'EECE 4353': case 'EECE 4354':
+        case 'ME 2220':
+            concentration = "Biomedical Engineering Electives";
+            break;
+        case 'BSCI 1511': case 'BSCI 1511L': case 'NURS 1500': case 'NURS 1600':
+            concentration = "Technical Elective";
+            break;
+        default:
+            if (splitName[0] == 'BME' && (splitName[1] != '2860' && parseInt(splitName[1]) > 2210)){
+                concentration = "Biomedical Engineering Electives";
+            } else if ((splitName[0] == 'BME' || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
+            splitName[0] == 'ENVE' || splitName[0] == 'EECE' || splitName[0] == 'CS' || 
+            splitName[0] == 'ENGM' || splitName[0] == 'MSE' || splitName[0] == 'ME' || 
+            splitName[0] == 'NANO' || splitName[0] == 'SC') && (className != 'BME 2201' && 
+            className != 'BME 2860' && className != 'CHBE 3300' && className != 'CE 2200' && 
+            className != 'CS 1000' && className != 'CS 1151' && className != 'ENGM 2160' && 
+            className != 'ENGM 2440' && className != 'ENGM 3100' && className != 'ENGM 3350' && 
+            className != 'ME 2171')) {
+                concentration = "Technical Elective";
+            } else {
+                concentration = "Open Elective";
+            }
+    }
+
+    return concentration;
 }
 
 function computerEngineering(className) {
