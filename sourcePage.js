@@ -47,7 +47,10 @@ function getHtml(selectedMajor) {
                 break;
             case 'electrical-engineering':
                 concentration = electricalEngineering(className);
-                break; 
+                break;
+            case 'computer-engineering':
+                concentration = computerEngineering(className);
+                break;
             default:
                 concentration = "This major is not yet available.";
         }
@@ -57,7 +60,77 @@ function getHtml(selectedMajor) {
     return html;
 }
 
-function electricalEngineering (className) {
+function computerEngineering(className) {
+    var concentration; // Local variable to hold concentration
+    var splitName = className.split(" "); // Split string to check for other class types
+
+    switch(className) {
+        case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': case 'MATH 2400': case 'MATH 2410': 
+        case 'MATH 2420': case 'MATH 2600': case 'MATH 2610': case 'MATH 2810': case 'MATH 2820':
+            concentration = "Math";
+            break;
+        case 'CHEM 1601': case 'CHEM 1601L': case 'CHEM 1602': case 'CHEM 1602L': case 'MSE 1500': 
+        case 'MSE 1500L': case 'PHYS 1601': case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L':
+            concentration = "Basic Science";
+            break;
+        case 'ES 1401': case 'ES 1402': case 'ES 1403': case 'ES 2100W':
+            concentration = "Engineering Fundamentals";
+            break;
+        case 'EECE 4950': case 'EECE 4951': case 'EECE 4959':
+            concentration = "Culminating Design Experience";
+            break; 
+        case 'EECE 2112': case 'EECE 2123': case 'EECE 2123L': case 'EECE 2218': case 'EECE 2218L':
+        case 'EECE 2213': case 'EECE 2213L': case 'EECE 3214': case 'CS 1101': case 'CS 1104': 
+        case 'CS 2201': case 'CS 3251':
+            concentration = "Computer Engineering Core";
+            break;
+        case 'EECE 4257': case 'EECE 4358':
+            concentration = "CompE Elective: Embedded Systems or Intelligent Systems and Robotics";
+            break;
+        case 'EECE 4275': case 'EECE 4356': case 'EECE 4376': case 'EECE 4377': case 'EECE 4385':
+            concentration = "CompE Elective: Embedded Systems";
+            break;
+        case 'CS 3274':
+            concentration = "CompE Elective: Embedded Systems or Computing Systems and Networks";
+            break;
+        case 'CS 4260': case 'CS 4269': case 'EECE 4353': case 'EECE 4354': case 'ME 4271':
+            concentration = "CompE Elective: Intelligent Systems and Robotics";
+            break;
+        case 'CS 3265': case 'CS 3281': case 'CS 3282': case 'CS 4266': case 'CS 4278': 
+        case 'CS 4279': case 'CS 4283': case 'CS 4284': case 'CS 4285': case 'CS 4288':
+        case 'EECE 4371':
+            concentration = "CompE Elective: Computing Systems and Networks";
+            break;
+        default:
+            if (splitName[0] == 'ENGM' && (splitName[1] == '2160' || splitName[1] == '2210' ||
+            splitName[1] == '3000' || splitName[1] == '3100' || splitName[1] == '3300' || 
+            splitName[1] == '3650' || splitName[1] == '4500') || ((splitName[0] == 'ASTR' && splitName[1] != '1010' && splitName[1] != '1111' && splitName[1] != '2130') || 
+            (splitName[0] == 'BSCI' && splitName[1] != '1111') || (splitName[0] == 'CHEM' && 
+            splitName[1] != '1010' && splitName[1] != '1020' && splitName[1] != '1601' && 
+            splitName[1] != '1602' && splitName[1] != '1111') || (splitName[0] == 'EES' && 
+            splitName[1] != '1080' && splitName[1] != '1111' && splitName[1] != '2150') || 
+            (splitName[0] == 'PSY' && (splitName[1] == '2100' || splitName[1] == '3780')) || 
+            (splitName[0] == 'NSC' && (splitName[1] == '2201' || splitName[1] == '3269' || 
+            splitName[1] == '4961')) ||(splitName[0] == 'MATH' && (parseInt(splitName[1]) >= 2410)) 
+            || (splitName[0] == 'PHYS' && (parseInt(splitName[1]) > 2000)))) {
+                concentration = "Technical Elective B";
+            } else if ((splitName[0] == 'BME' && splitName[1] != '2201' && splitName[1] != '2860' 
+            && splitName[1] != '3860' && splitName[1] != '3861') || (splitName[0] == 'CHBE' && 
+            splitName[1] != '2150' && splitName[1] != '2900W') || (splitName[0] == 'CE' || 
+            splitName[0] == 'ENVE' || splitName[0] == 'ME' || splitName[0] == 'EECE' || 
+            splitName[0] == 'MSE') || (splitName[0] == 'CS' && splitName[1] != '1000' && 
+            splitName[1] != '1101' && splitName[1] != '1103' && splitName[1] != '1104' && 
+            splitName[1] != '1151')) {
+                concentration = "Technical Elective A";
+            } else {
+                concentration = "Open Elective";
+            }
+    }
+
+    return concentration;
+}
+
+function electricalEngineering(className) {
     var concentration; // Local variable to hold concentration
     var splitName = className.split(" "); // Split string to check for other class types
 
@@ -120,13 +193,16 @@ function electricalEngineering (className) {
             concentration = "Technical Elective A";
             break; 
         default:
-            if ((splitName[0] == 'ASTR' && splitName[1] != '1010' && splitName[1] != '1111' && 
-            splitName[1] != '2130') || (splitName[0] == 'BSCI' && splitName[1] != '1111') || 
-            (splitName[0] == 'CHEM' && splitName[1] != '1010' && splitName[1] != '1020' && 
-            splitName[1] != '1601' && splitName[1] != '1602' && splitName[1] != '1111') || 
-            (splitName[0] == 'EES' && splitName[1] != '1080' && splitName[1] != '1111' && 
-            splitName[1] != '2150') || (splitName[0] == 'MATH' && (parseInt(splitName[1]) >= 2410)) 
-            || (splitName[0] == 'PHYS' && (parseInt(splitName[1]) > 2000))) {
+            if (splitName[0] == 'ENGM' && (splitName[1] == '2160' || splitName[1] == '2210' ||
+            splitName[1] == '3000' || splitName[1] == '3100' || splitName[1] == '3300' || 
+            splitName[1] == '3650' || splitName[1] == '4500') || ((splitName[0] == 'ASTR' && splitName[1] != '1010' && splitName[1] != '1111' && splitName[1] != '2130') || (splitName[0] == 'BSCI' && splitName[1] != '1111') || (splitName[0] == 'CHEM' && 
+            splitName[1] != '1010' && splitName[1] != '1020' && splitName[1] != '1601' && 
+            splitName[1] != '1602' && splitName[1] != '1111') || (splitName[0] == 'EES' && 
+            splitName[1] != '1080' && splitName[1] != '1111' && splitName[1] != '2150') || 
+            (splitName[0] == 'PSY' && (splitName[1] == '2100' || splitName[1] == '3780')) || 
+            (splitName[0] == 'NSC' && (splitName[1] == '2201' || splitName[1] == '3269' || 
+            splitName[1] == '4961')) ||(splitName[0] == 'MATH' && (parseInt(splitName[1]) >= 2410)) 
+            || (splitName[0] == 'PHYS' && (parseInt(splitName[1]) > 2000)))) {
                 concentration = "Technical Elective B";
             } else if ((splitName[0] == 'BME' && splitName[1] != '2201' && splitName[1] != '2860' 
             && splitName[1] != '3860' && splitName[1] != '3861') || (splitName[0] == 'CHBE' && 
