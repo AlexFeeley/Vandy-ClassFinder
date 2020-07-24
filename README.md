@@ -1,32 +1,32 @@
 # Vandy-ClassFinder
 
-Chrome extension that tells students what part of their major is being fulfilled by each class shown on YES. This project was created during VandyHacks Summer edition by Alex, Claire, and Hadley. 
+Vandy ClassFinder aims to help Vanderbilt students easily find what requirements their
+classes fulfill from within the School of Engineering. 
+
+## To install the Chrome extension:
+* Clone the repository onto your local machine into a known directory
+```
+git clone https://github.com/AlexFeeley/Vandy-ClassFinder.git
+```
+* Open a new Google Chrome browser, and navigate to the [extension management page](chrome://extensions)
+* In the upper right corner, toggle *Developer Mode*
+* Click on the *Load Unpacked* button in the upper left corner, and select the extension's directory
+
+## To pin the Chrome extension to the taskbar:
+* Click the Puzzle piece in the taskbar
+* Pin the *Vandy Class Finder* extension
 
 ## Select a major:
 The Chrome extension uses a major, provided by you, to determine which requirements of that major each class on your YES page meets. 
 * Right click the *Vandy Class Finder* extension
 * Select options
-* Using the dropdown, pick your major
-* Hit save
+* Using the dropdown, pick your major, and hit save
 
-### To install the Chrome extension:
-* Clone the repository onto your local machine into a known directory
-* Open a new Google Chrome browser, and navigate to the [extension management page](chrome://extensions)
-* In the upper right corner, toggle *Developer Mode*
-* Click on the *Load unpacked* button in the upper left corner, and select the extension's directory
-
-### To pin the Chrome extension to the taskbar:
-* Click the Puzzle piece in the taskbar
-* Pin the *Vandy Class Finder* extension
-
-### To re-load the Chrome extension after making a change:
-* Reload the [extension management page](chrome://extensions), and Chrome will reload the extension
-
-### To see the action of the Chrome extension:
+## To see what requirements each class fulfills:
+* Navigate to the Student Registration section of *YES* 
 * Click on the Vanderbilt icon in the pinned tab bar
+* View the popup window to see your classes and their requirements displayed
 
-### To be continued:
-* Connect major set in options to selectedMajor in sourcePage.js
-* Replace switch statement with variable that returns value from parsing through Excel function
-* Add majors outside of engineering
-* Connect *updated class details* button to popup
+### Authors
+This Chrome Extension was started during VandyHacks Summer Edition and continued
+over the course of Summer 2020 by Alex, Claire, and Hadley. 
