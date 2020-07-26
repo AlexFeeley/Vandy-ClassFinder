@@ -60,6 +60,12 @@ function getHtml(selectedMajor) {
             case 'civil-engineering':
                 concentration = civilEngineering(className);
                 break; 
+            case 'mechanical-engineering':
+                concentration = mechanicalEngineering(className);
+                break; 
+            case 'engineering-science':
+                concentration = engineeringScience(className);
+                break; 
             default:
                 concentration = "This major is not yet available.";
         }
@@ -68,6 +74,56 @@ function getHtml(selectedMajor) {
     }
     return html;
 }
+
+
+function engineeringScience(className) {
+    var concentration; // Local variable to hold concentration
+    var splitName = className.split(" "); // Split string to check for other class types
+
+    switch(className) {
+        case 'CHEM 1601': case 'CHEM 1601L': case 'BSCI 1510': case 'BSCI 1510L': 
+        case 'BSCI 1511': case 'BSCI 1511L': case 'CHEM 1602': case 'CHEM 1602L': 
+        case 'PHYS 1601': case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L': 
+        case 'MSE 1500': case 'MSE 1500L': 
+            concentration = 'Basic Science'; 
+            break; 
+        case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': 
+            concentration = 'Math'; 
+            break; 
+        case 'CS 1101': case 'CS 1103': case 'CS 1104': case 'ES 1401': case 'ES 1402': 
+        case 'ES 1403': case 'ES 2100W': case 'ENGM 3700': 
+            concentration = 'Engineering Fundamentals'; 
+            break; 
+        case 'ES 4951': case '4959': 
+            concentration = 'Senior Capstone'; 
+            break; 
+        default: 
+            if (splitName[0] == 'MATH' && parseInt(splitName[1]) >= 2400) {
+                concentration = 'Math'; 
+            } 
+            else if ((splitName[0] == 'BME' && splitName[1] != '1105' && splitName[1] != '2201' 
+            && splitName[1] != '2860') || splitName[0] == 'CHBE' || splitName[0] == 'CE' 
+            || (splitName[0] == 'CS' && splitName[1] != '1000' && splitName[1] != '1151') 
+            || splitName[0] == 'EECE' || splitName[0] == 'ENVE' || splitName[0] == 'MSE' 
+            || splitName[0] == 'ME' || splitName[0] == 'NANO' || splitName[0] == 'SC') {
+                concentration = 'Engineering Core';
+            } 
+            else if ((splitName[0] == 'BME' && splitName[1] != '1105' && splitName[1] != '2201' 
+            && splitName[1] != '2860') || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
+            splitName[0] == 'ENVE' || (splitName[0] == 'CS' && splitName[1] != '1000' && 
+            splitName[1] != '1151') || splitName[0] == 'EECE' || (splitName[0] == 'ENGM' && 
+            splitName[1] != '2440' && splitName[1] != '4800') || (splitName[0] == 'ES' && 
+            splitName[1] != '1115' && splitName[1] != '2700' splitName[1] != '3884') || 
+            splitName[0] == 'MSE' || splitName[0] == 'ME' || splitName[0] == 'NANO' || 
+            splitName[0] == 'SC') {
+                concentration = 'Engineering Electives'; 
+            }  else {
+                concentration = 'Open Electives';
+            }
+    }
+    return concentration; 
+}
+
 
 function civilEngineering(className) {
     var concentration; // Local variable to hold concentration
