@@ -57,6 +57,9 @@ function getHtml(selectedMajor) {
             case 'chemical-engineering':
                 concentration = chemicalEngineering(className);
                 break;
+            case 'civil-engineering':
+                concentration = civilEngineering(className);
+                break; 
             default:
                 concentration = "This major is not yet available.";
         }
@@ -64,6 +67,76 @@ function getHtml(selectedMajor) {
         html += (className + ' (' + concentration + ')\n');
     }
     return html;
+}
+
+function civilEngineering(className) {
+    var concentration; // Local variable to hold concentration
+    var splitName = className.split(" "); // Split string to check for other class types
+
+    switch(className) {
+        case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': case 'MATH 2420':
+            concentration = 'Math'; 
+            break; 
+        case 'PHYS 1601': case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L': 'CHEM 1601': 
+        case 'CHEM 1601L':
+            concentration = 'Basic Science';
+            break; 
+        case 'EES 1030': case 'EES 1030L': case 'EES 1510': case 'EES 1510L': case 'EES 3250':
+        case 'EES 3260': case 'EES 3330': case 'EES 3340':
+            concentration = 'Basic Science Elective';
+            break; 
+        case 'CS 1101': case 'CS 1103': case 'CS 1104':
+            concentration = 'Computing';
+            break; 
+        case 'ES 1401': case 'ES 1402': case 'ES 1403': case 'CE 2101': case 'CE 2200': 
+        case 'CE 2205': case 'CE 3700': case 'CE 3700L': case 'ENGM 2160': case 'ME 2190':
+        case 'MSE 2220': case 'CHBE 2200':
+            concentration = 'Engineering Fundamentals';
+            break; 
+        case 'CE 2120': case 'CE 3100W': case 'CE 3200': case 'CE 3205': case 'CE 3300': 
+        case 'CE 3501': case 'CE 3705': case 'CE 4400': case 'CE 4950': case 'CE 4951':
+        case 'CE 4959':
+            concentration = 'Civil Engineering Core'; 
+            break; 
+        case 'CE 3250': case 'CE 3600': case 'CE 4250': case 'ENVE 4615':
+            concentration = 'Civil Engineering Program Electives';
+            break; 
+        case 'CE 4150': case 'CE 4200': case 'CE 4210': case 'CE 4240': case 'CE 4250':
+        case 'CE 4425': case 'CE 4430': case 'CE 4500': case 'CE 4505': case 'CE 4510':
+        case 'ENVE 4305': case 'ENVE 4610': case 'ENVE 4625': case 'ENVE 4710':
+            concentration = 'Civil Engineering Design Electives';
+            break; 
+        case 
+            concentration = 'Technical Electives';
+            break; 
+        default:
+            if ((splitName[0] == 'BSCI' && parseInt(splitName[1]) >= 1510) || 
+            (splitName[0] == 'MSE' && splitName[1] != '3851' && splitName[1] != '3860' 
+            && splitName[1] != '3889' && splitName[1] != '3890')) {
+                concentration = 'Basic Science Elective';
+
+            } else if ((splitName[0] == 'BME' && splitName[1] != '2201' && splitName[1] != '2860') || 
+            splitName[0] == 'CHBE' || splitName[0] == 'CE' || splitName[0] == 'ENVE' || 
+            splitName[0] == 'EECE' || splitName[0] == 'ME' || (splitName[0] == 'ENGM' && 
+            (splitName[1] == '3000' || splitName[1] == '3010' || splitName[1] == '3200' 
+            || splitName[1] == '3650')) || (splitName[0] == 'CHEM' && parseInt(splitName[1]) >= 1602) 
+            || (splitName[0] == 'PHYS' && parseInt(splitName[1]) > 2000) || (splitName[0] == 'MATH' && 
+            splitName[1] != 3000 && ((parseInt(splitName[1]) >= 2811) || splitName[1] == '2410' || 
+            splitName[1] == '2600')) || 
+            // courses also acceptable as basic science electives
+            (splitName[0] == 'EES' && (splitName[1] == '1030' || 
+            splitName[1] == '1030L' || splitName[1] == '1510' || splitName[1] == '1510L' || 
+            splitName[1] == '3250' || splitName[1] == '3260' || splitName[1] == '3330' || 
+            splitName[1] == '3340')) || ((splitName[0] == 'BSCI' && parseInt(splitName[1]) >= 1510) || 
+            (splitName[0] == 'MSE' && splitName[1] != '3851' && splitName[1] != '3860' 
+            && splitName[1] != '3889' && splitName[1] != '3890'))) {
+                concentration = 'Technical Electives'; 
+            }
+            else {
+                concentration = 'Open Electives';
+            }
+    }
+    return concentration; 
 }
 
 function chemicalEngineering(className) {
