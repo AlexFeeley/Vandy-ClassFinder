@@ -125,6 +125,57 @@ function engineeringScience(className) {
 }
 
 
+function mechanicalEngineering(className) {
+    var concentration; // Local variable to hold concentration
+    var splitName = className.split(" "); // Split string to check for other class types
+
+    switch(className) {
+        case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': case 'MATH 2420':
+            concentration = 'Math';
+            break; 
+        case 'CHEM 1601': case 'CHEM 1601L': case 'MSE 1500': case 'MSE 1500L': case 'CHEM 1602': 
+        case 'CHEM 1602L': case 'PHYS 1601': case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L':
+            concentration = 'Basic Science'; 
+            break; 
+        case 'ES 1401': case 'ES 1402': case 'ES 1403': case 'CE 2200': case 'CE 2205':
+        case 'CS 1101': case 'CS 1103': case 'CS 1104': case 'EECE 2112': case 'ME 2190': 
+        case 'ME 2220': case 'ME 3224': case 'MSE 2205': 
+            concentration = 'Engineering Science'; 
+            break; 
+        case 'ME 2160': case 'ME 2171': case 'ME 3202': case 'ME 3204': case 'ME 3234': 
+        case 'ME 3248': case 'ME 4213': case 'ME 4950': case 'ME 4951': case 'ME 4959':
+            concentration = 'Mechanical Engineering Core'; 
+            break; 
+        default: 
+            if (splitName[0] == 'MATH' && parseInt(splitName[1]) >= 2410 && 
+            splitName[1] != '3000') {
+                concentration = 'Math (required elective)';
+            }
+            else if ((splitName[0] == 'BME' && splitName[1] != '2201' && 
+            splitName[1] != '2860') || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
+            splitName[0] == 'ENVE' || (splitName[0] == 'CS' && splitName[1] != '1000' && 
+            splitName[1] != '1151') || splitName[0] == 'EECE' || (splitName[0] == 'ENGM' && 
+            splitName[1] != '2440' && splitName[1] != '4800' && splitName[1] != '3350') || 
+            (splitName[0] == 'ES' && splitName[1] != '2700' && splitName[1] != '2900' && 
+            splitName[1] != '3884') || splitName[0] == 'MSE' || splitName[0] == 'ME' || 
+            splitName[0] == 'NANO' || splitName[0] == 'SC' || (splitName[0] == 'MATH' && 
+            parseInt(splitName[1] >= 2420) && splitName[1] != 3000) || (splitName[0] == 'CHEM' 
+            && parseInt(splitName[1] >= 2000)) || (splitName[0] == 'PHYS' && 
+            parseInt(splitName[1] >= 2000)) || splitName[0] == 'ASTR' || splitName[0] == 'BSCI' 
+            || splitName[0] == 'EES' || splitName[0] == 'NSC') { {
+                concentration = 'Technical Electives';
+            }
+            else if (splitName[0] == 'ME') {
+                concentration = 'Professional Mechanical Engineering Depth';  
+            }
+             else {
+                concentration = 'Open Electives';
+            }
+    }
+    return concentration; 
+}
+
+
 function civilEngineering(className) {
     var concentration; // Local variable to hold concentration
     var splitName = className.split(" "); // Split string to check for other class types
