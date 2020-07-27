@@ -94,30 +94,28 @@ function engineeringScience(className) {
         case 'ES 1403': case 'ES 2100W': case 'ENGM 3700': 
             concentration = 'Engineering Fundamentals'; 
             break; 
-        case 'ES 4951': case '4959': 
+        case 'ES 4951': case 'ES 4959': 
             concentration = 'Senior Capstone'; 
             break; 
         default: 
             if (splitName[0] == 'MATH' && parseInt(splitName[1]) >= 2400) {
                 concentration = 'Math'; 
-            } 
-            else if ((splitName[0] == 'BME' && splitName[1] != '1105' && splitName[1] != '2201' 
+            } else if ((splitName[0] == 'BME' && splitName[1] != '1105' && splitName[1] != '2201' 
             && splitName[1] != '2860') || splitName[0] == 'CHBE' || splitName[0] == 'CE' 
             || (splitName[0] == 'CS' && splitName[1] != '1000' && splitName[1] != '1151') 
             || splitName[0] == 'EECE' || splitName[0] == 'ENVE' || splitName[0] == 'MSE' 
             || splitName[0] == 'ME' || splitName[0] == 'NANO' || splitName[0] == 'SC') {
                 concentration = 'Engineering Core';
-            } 
-            else if ((splitName[0] == 'BME' && splitName[1] != '1105' && splitName[1] != '2201' 
+            } else if ((splitName[0] == 'BME' && splitName[1] != '1105' && splitName[1] != '2201' 
             && splitName[1] != '2860') || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
             splitName[0] == 'ENVE' || (splitName[0] == 'CS' && splitName[1] != '1000' && 
             splitName[1] != '1151') || splitName[0] == 'EECE' || (splitName[0] == 'ENGM' && 
             splitName[1] != '2440' && splitName[1] != '4800') || (splitName[0] == 'ES' && 
-            splitName[1] != '1115' && splitName[1] != '2700' splitName[1] != '3884') || 
+            splitName[1] != '1115' && splitName[1] != '2700' && splitName[1] != '3884') || 
             splitName[0] == 'MSE' || splitName[0] == 'ME' || splitName[0] == 'NANO' || 
             splitName[0] == 'SC') {
                 concentration = 'Engineering Electives'; 
-            }  else {
+            } else {
                 concentration = 'Open Electives';
             }
     }
@@ -150,8 +148,7 @@ function mechanicalEngineering(className) {
             if (splitName[0] == 'MATH' && parseInt(splitName[1]) >= 2410 && 
             splitName[1] != '3000') {
                 concentration = 'Math (required elective)';
-            }
-            else if ((splitName[0] == 'BME' && splitName[1] != '2201' && 
+            } else if ((splitName[0] == 'BME' && splitName[1] != '2201' && 
             splitName[1] != '2860') || splitName[0] == 'CHBE' || splitName[0] == 'CE' || 
             splitName[0] == 'ENVE' || (splitName[0] == 'CS' && splitName[1] != '1000' && 
             splitName[1] != '1151') || splitName[0] == 'EECE' || (splitName[0] == 'ENGM' && 
@@ -162,13 +159,11 @@ function mechanicalEngineering(className) {
             parseInt(splitName[1] >= 2420) && splitName[1] != 3000) || (splitName[0] == 'CHEM' 
             && parseInt(splitName[1] >= 2000)) || (splitName[0] == 'PHYS' && 
             parseInt(splitName[1] >= 2000)) || splitName[0] == 'ASTR' || splitName[0] == 'BSCI' 
-            || splitName[0] == 'EES' || splitName[0] == 'NSC') { {
+            || splitName[0] == 'EES' || splitName[0] == 'NSC') {
                 concentration = 'Technical Electives';
-            }
-            else if (splitName[0] == 'ME') {
+            } else if (splitName[0] == 'ME') {
                 concentration = 'Professional Mechanical Engineering Depth';  
-            }
-             else {
+            } else {
                 concentration = 'Open Electives';
             }
     }
@@ -184,7 +179,8 @@ function civilEngineering(className) {
         case 'MATH 1300': case 'MATH 1301': case 'MATH 2300': case 'MATH 2420':
             concentration = 'Math'; 
             break; 
-        case 'PHYS 1601': case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L': 'CHEM 1601': 
+        case 'PHYS 1601': case 'PHYS 1601L': case 'PHYS 1602': case 'PHYS 1602L': 
+        case 'CHEM 1601': 
         case 'CHEM 1601L':
             concentration = 'Basic Science';
             break; 
@@ -212,10 +208,7 @@ function civilEngineering(className) {
         case 'CE 4425': case 'CE 4430': case 'CE 4500': case 'CE 4505': case 'CE 4510':
         case 'ENVE 4305': case 'ENVE 4610': case 'ENVE 4625': case 'ENVE 4710':
             concentration = 'Civil Engineering Design Electives';
-            break; 
-        case 
-            concentration = 'Technical Electives';
-            break; 
+            break;  
         default:
             if ((splitName[0] == 'BSCI' && parseInt(splitName[1]) >= 1510) || 
             (splitName[0] == 'MSE' && splitName[1] != '3851' && splitName[1] != '3860' 
