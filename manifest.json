@@ -2,8 +2,8 @@
     "name": "Vandy Class Finder",
     "version": "1.0",
     "icons": {
-        "48": "48x48.png",
-       "128": "128x128.png" },
+        "48": "icons/48x48.png",
+       "128": "icons/128x128.png" },
     "description": "Chrome extension that adds in a class's concentration to Vanderbilt's class search tool, YES.",
 
     "manifest_version": 2,
